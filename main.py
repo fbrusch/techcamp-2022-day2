@@ -6,15 +6,25 @@ from time import sleep
 pygame.init()
 screen = pygame.display.set_mode((300,300))
 
-# draw a green box
+# state variables
 x = 10
 y = 10
 vx = 1
 vy = 2
 
+# target state
+target_x = 100
+target_y = 150
+
 def render():
   pygame.draw.rect(screen, (100,100,100),   (0,0,300,300))
+
   pygame.draw.rect(screen, (0,255,0), (x, y, 100, 100))
+  pygame.draw.rect(screen, (255,0,0), (target_x,
+                                       target_y, 
+                                       30, 30))
+
+  
   pygame.display.flip()
 
 def controller():
