@@ -2,6 +2,7 @@
 # https://replit.com/@FrancescoBrusch/techcamp-2022-day2?v=1
 
 import pygame
+from random import randint
 from time import sleep
 pygame.init()
 screen = pygame.display.set_mode((300,300))
@@ -15,6 +16,8 @@ vy = 0
 # target state
 target_x = 100
 target_y = 150
+target_vx = 1
+target_vy = 2
 box_on_target = False
 
 
@@ -60,7 +63,13 @@ def controller():
   else:
     box_on_target = False
 
-  
+  if keys[pygame.K_SPACE]:
+    if box_on_target:
+      target_x = randint(0,299-30)
+      target_y = randint(0,299-30)
+      target_vx = randint(0,299-30)
+      target_vy = randint(0,299-30)
+    
   
     
   x = x + vx
@@ -78,7 +87,16 @@ def controller():
   if y < 0: 
     vy = -0.8*vy
     y = 0
-    
+
+  # target movement
+  target_x = target_x + target_vx
+  target_y = target_y + target_vy
+
+  if target_x > 300: target_x = 0
+  if target_x < 0: target_x = 300
+  if target_y > 300: target_y = 0
+  if target_y < 0: target_y = 300
+  
   #vy += 0.1
 
 while True:
