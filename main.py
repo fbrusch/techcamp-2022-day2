@@ -19,6 +19,7 @@ target_y = 150
 target_vx = 1
 target_vy = 2
 box_on_target = False
+score = 0
 
 
 
@@ -43,7 +44,7 @@ def render():
   pygame.display.flip()
 
 def controller():
-  global x, y, vx, vy, target_x, target_y, box_on_target
+  global x, y, vx, vy, target_x, target_y, box_on_target, target_vx, target_vy, score
   pygame.event.get()
   keys = pygame.key.get_pressed()
   if keys[pygame.K_UP]:
@@ -67,8 +68,11 @@ def controller():
     if box_on_target:
       target_x = randint(0,299-30)
       target_y = randint(0,299-30)
-      target_vx = randint(0,299-30)
-      target_vy = randint(0,299-30)
+      target_vx = randint(-2,2)
+      target_vy = randint(-2,2)
+
+      score = score +1
+      print(score)
     
   
     
